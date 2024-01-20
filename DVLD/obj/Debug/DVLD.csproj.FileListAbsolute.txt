@@ -12,3 +12,11 @@ C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.cspr
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.csproj.CopyComplete
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.exe
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.pdb
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.People.frmListPeople.resources
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\bin\Debug\DVLD_DataAccess.dll
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\bin\Debug\DVLD_DataAccess.pdb
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.People.frmAddUpdatePerson.resources
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.People.Controls.ctrlPersonCard.resources
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.People.Controls.ctrlPersonCardWithFilter.resources
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.People.frmFindPerson.resources
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.People.frmShowPersonInfo.resources
