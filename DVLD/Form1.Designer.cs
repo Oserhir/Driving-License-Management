@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managesApplicationTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageTestTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.driverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,8 @@
             // applicationToolStripMenuItem
             // 
             this.applicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.managesApplicationTypeToolStripMenuItem});
+            this.managesApplicationTypeToolStripMenuItem,
+            this.manageTestTypeToolStripMenuItem});
             this.applicationToolStripMenuItem.Image = global::DVLD.Properties.Resources.Applications_64;
             this.applicationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
@@ -75,6 +77,15 @@
             this.managesApplicationTypeToolStripMenuItem.Size = new System.Drawing.Size(314, 70);
             this.managesApplicationTypeToolStripMenuItem.Text = "Manage Application Type";
             this.managesApplicationTypeToolStripMenuItem.Click += new System.EventHandler(this.managesApplicationTypeToolStripMenuItem_Click);
+            // 
+            // manageTestTypeToolStripMenuItem
+            // 
+            this.manageTestTypeToolStripMenuItem.Image = global::DVLD.Properties.Resources.Test_Type_64;
+            this.manageTestTypeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.manageTestTypeToolStripMenuItem.Name = "manageTestTypeToolStripMenuItem";
+            this.manageTestTypeToolStripMenuItem.Size = new System.Drawing.Size(314, 70);
+            this.manageTestTypeToolStripMenuItem.Text = "Manage Test Types";
+            this.manageTestTypeToolStripMenuItem.Click += new System.EventHandler(this.manageTestTypeToolStripMenuItem_Click);
             // 
             // peopleToolStripMenuItem
             // 
@@ -151,8 +162,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(965, 487);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -174,6 +187,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem adadToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem managesApplicationTypeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageTestTypeToolStripMenuItem;
     }
 }
 

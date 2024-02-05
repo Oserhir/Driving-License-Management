@@ -28,3 +28,5 @@ C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.User
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.Login.frmLogin.resources
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.Applications.Application_Types.frmEditApplicationType.resources
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.Applications.Application_Types.frmListApplicationTypes.resources
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.Tests.Test_Types.frmEditTestType.resources
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.Tests.Test_Types.frmListTestTypes.resources
