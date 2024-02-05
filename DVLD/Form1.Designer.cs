@@ -30,6 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managesApplicationTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.driverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,11 +59,22 @@
             // 
             // applicationToolStripMenuItem
             // 
+            this.applicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.managesApplicationTypeToolStripMenuItem});
             this.applicationToolStripMenuItem.Image = global::DVLD.Properties.Resources.Applications_64;
             this.applicationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             this.applicationToolStripMenuItem.Size = new System.Drawing.Size(170, 68);
             this.applicationToolStripMenuItem.Text = "Application";
+            // 
+            // managesApplicationTypeToolStripMenuItem
+            // 
+            this.managesApplicationTypeToolStripMenuItem.Image = global::DVLD.Properties.Resources.Application_Types_641;
+            this.managesApplicationTypeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.managesApplicationTypeToolStripMenuItem.Name = "managesApplicationTypeToolStripMenuItem";
+            this.managesApplicationTypeToolStripMenuItem.Size = new System.Drawing.Size(314, 70);
+            this.managesApplicationTypeToolStripMenuItem.Text = "Manage Application Type";
+            this.managesApplicationTypeToolStripMenuItem.Click += new System.EventHandler(this.managesApplicationTypeToolStripMenuItem_Click);
             // 
             // peopleToolStripMenuItem
             // 
@@ -161,6 +173,7 @@
         private System.Windows.Forms.ToolStripMenuItem adadToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem adadToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem managesApplicationTypeToolStripMenuItem;
     }
 }
 
