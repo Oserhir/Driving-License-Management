@@ -184,6 +184,8 @@ namespace DVLD.People
         {
             Form frm = new frmShowPersonInfo((int)dgvPeople.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
+
+            _RefreshPeopleList();
         }
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)

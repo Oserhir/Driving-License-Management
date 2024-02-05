@@ -72,7 +72,7 @@ namespace DVLD.People.Controls
 
         public void LoadPersonInfo(int PersonID)
         {
-            cbFilterBy.SelectedIndex = 0;
+            cbFilterBy.SelectedIndex = 1;
             txtFilterValue.Text = PersonID.ToString();
 
             FindNow();

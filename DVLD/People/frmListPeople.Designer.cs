@@ -155,7 +155,6 @@
             // 
             // editToolStripMenuItem
             // 
-            this.editToolStripMenuItem.Image = global::DVLD.Properties.Resources.edit_32;
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
