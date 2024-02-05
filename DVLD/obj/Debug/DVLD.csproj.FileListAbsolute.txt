@@ -25,3 +25,4 @@ C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.User
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.User.ctrlUserCard.resources
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.User.frmUserInfo.resources
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.User.frmChangePassword.resources
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD\obj\Debug\DVLD.Login.frmLogin.resources

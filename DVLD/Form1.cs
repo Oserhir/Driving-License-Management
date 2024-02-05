@@ -1,4 +1,6 @@
-﻿using DVLD.People;
+﻿using DVLD.Global_Classes;
+using DVLD.Login;
+using DVLD.People;
 using DVLD.User;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,15 @@ namespace DVLD
 {
     public partial class Form1 : Form
     {
+        frmLogin _frmLogin;
+
+        public Form1(frmLogin frm)
+        {
+            InitializeComponent();
+            _frmLogin = frm;
+
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +40,26 @@ namespace DVLD
         {
             frmListUsers frm = new frmListUsers();
             frm.ShowDialog();
+        }
+
+        private void adaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserInfo frm = new frmUserInfo(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void adadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void adadToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            clsGlobal.CurrentUser = null;
+
+            _frmLogin.Show();
+            this.Close();
         }
     }
 }

@@ -33,6 +33,11 @@
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.driverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asadsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.adadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +48,8 @@
             this.applicationToolStripMenuItem,
             this.peopleToolStripMenuItem,
             this.driverToolStripMenuItem,
-            this.userToolStripMenuItem});
+            this.userToolStripMenuItem,
+            this.asadsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(965, 72);
@@ -82,6 +88,51 @@
             this.userToolStripMenuItem.Text = "Users";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
+            // asadsToolStripMenuItem
+            // 
+            this.asadsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adaToolStripMenuItem,
+            this.adadToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.adadToolStripMenuItem1});
+            this.asadsToolStripMenuItem.Image = global::DVLD.Properties.Resources.account_settings_64;
+            this.asadsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.asadsToolStripMenuItem.Name = "asadsToolStripMenuItem";
+            this.asadsToolStripMenuItem.Size = new System.Drawing.Size(211, 68);
+            this.asadsToolStripMenuItem.Text = "Account Settings";
+            // 
+            // adaToolStripMenuItem
+            // 
+            this.adaToolStripMenuItem.Image = global::DVLD.Properties.Resources.PersonDetails_32;
+            this.adaToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.adaToolStripMenuItem.Name = "adaToolStripMenuItem";
+            this.adaToolStripMenuItem.Size = new System.Drawing.Size(224, 38);
+            this.adaToolStripMenuItem.Text = "Current User Info";
+            this.adaToolStripMenuItem.Click += new System.EventHandler(this.adaToolStripMenuItem_Click);
+            // 
+            // adadToolStripMenuItem
+            // 
+            this.adadToolStripMenuItem.Image = global::DVLD.Properties.Resources.padlock32;
+            this.adadToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.adadToolStripMenuItem.Name = "adadToolStripMenuItem";
+            this.adadToolStripMenuItem.Size = new System.Drawing.Size(224, 38);
+            this.adadToolStripMenuItem.Text = "Change Password";
+            this.adadToolStripMenuItem.Click += new System.EventHandler(this.adadToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            // 
+            // adadToolStripMenuItem1
+            // 
+            this.adadToolStripMenuItem1.Image = global::DVLD.Properties.Resources.sign_out_32__2;
+            this.adadToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.adadToolStripMenuItem1.Name = "adadToolStripMenuItem1";
+            this.adadToolStripMenuItem1.Size = new System.Drawing.Size(224, 38);
+            this.adadToolStripMenuItem1.Text = "Sign Out";
+            this.adadToolStripMenuItem1.Click += new System.EventHandler(this.adadToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,6 +156,11 @@
         private System.Windows.Forms.ToolStripMenuItem peopleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem driverToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asadsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem adadToolStripMenuItem1;
     }
 }
 
