@@ -34,7 +34,7 @@
             // 
             // crlScheduleTest1
             // 
-            this.crlScheduleTest1.Location = new System.Drawing.Point(2, 1);
+            this.crlScheduleTest1.Location = new System.Drawing.Point(3, 12);
             this.crlScheduleTest1.Name = "crlScheduleTest1";
             this.crlScheduleTest1.Size = new System.Drawing.Size(568, 725);
             this.crlScheduleTest1.TabIndex = 0;
@@ -46,7 +46,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(209, 698);
+            this.btnClose.Location = new System.Drawing.Point(253, 677);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 37);
