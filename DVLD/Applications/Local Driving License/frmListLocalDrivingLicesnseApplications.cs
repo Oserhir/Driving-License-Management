@@ -1,4 +1,6 @@
-﻿using DVLD.Tests.Test_Types;
+﻿using DVLD.Licenses;
+using DVLD.Licenses.Local_Licenses;
+using DVLD.Tests.Test_Types;
 using DVLD_Buisness;
 using System;
 using System.Collections.Generic;
@@ -162,11 +164,11 @@ namespace DVLD.Applications.Local_Driving_License
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
-            //clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
+            int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            clsLocalDrivingLicenseApplication localDrivingLicenseApplication = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(LocalDrivingLicenseApplicationID);
 
-            //frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(localDrivingLicenseApplication.ApplicantPersonID);
-            //frm.ShowDialog();
+            frmShowPersonLicenseHistory frm = new frmShowPersonLicenseHistory(localDrivingLicenseApplication.ApplicationPersonID);
+            frm.ShowDialog();
         }
 
         private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -196,32 +198,32 @@ namespace DVLD.Applications.Local_Driving_License
 
         private void issueDrivingLicenseFirstTimeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
-            //frmIssueDriverLicenseFirstTime frm = new frmIssueDriverLicenseFirstTime(LocalDrivingLicenseApplicationID);
-            //frm.ShowDialog();
-            ////refresh
-            //frmListLocalDrivingLicesnseApplications_Load(null, null);
+            int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            frmIssueDriverLicenseFirstTime frm = new frmIssueDriverLicenseFirstTime(LocalDrivingLicenseApplicationID);
+            frm.ShowDialog();
+            //refresh
+            frmListLocalDrivingLicesnseApplications_Load(null, null);
         }
 
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            int LocalDrivingLicenseApplicationID = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
 
-            //int LicenseID = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(
-            //   LocalDrivingLicenseApplicationID).GetActiveLicenseID();
+            int LicenseID = clsLocalDrivingLicenseApplication.FindByLocalDrivingAppLicenseID(
+               LocalDrivingLicenseApplicationID).GetActiveLicenseID();
 
-            //if (LicenseID != -1)
-            //{
-            //    frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
-            //    frm.ShowDialog();
+            if (LicenseID != -1)
+            {
+                frmShowLicenseInfo frm = new frmShowLicenseInfo(LicenseID);
+                frm.ShowDialog();
 
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No License Found!", "No License", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-        }
+            }
+            else
+            {
+                MessageBox.Show("No License Found!", "No License", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+                }
+            }
 
         private void btnAddNewApplication_Click(object sender, EventArgs e)
         {

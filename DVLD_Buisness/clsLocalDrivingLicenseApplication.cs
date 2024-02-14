@@ -286,10 +286,10 @@ namespace DVLD_Buisness
         //    return clsTest.GetPassedTestCount(LocalDrivingLicenseApplicationID);
         //}
 
-        //public bool PassedAllTests()
-        //{
-        //    return clsTest.PassedAllTests(this.LocalDrivingLicenseApplicationID);
-        //}
+        public bool PassedAllTests()
+        {
+            return clsTest.PassedAllTests(this.LocalDrivingLicenseApplicationID);
+        }
 
         //public static bool PassedAllTests(int LocalDrivingLicenseApplicationID)
         //{
@@ -297,57 +297,60 @@ namespace DVLD_Buisness
         //    return clsTest.PassedAllTests(LocalDrivingLicenseApplicationID);
         //}
 
-        //public int IssueLicenseForTheFirtTime(string Notes, int CreatedByUserID)
-        //{
-        //    int DriverID = -1;
 
-        //    clsDriver Driver = clsDriver.FindByPersonID(this.ApplicationPersonID);
+        public int IssueLicenseForTheFirtTime(string Notes, int CreatedByUserID)
+        {
+            int DriverID = -1;
 
-        //    if (Driver == null)
-        //    {
-        //        //we check if the driver already there for this person.
-        //        Driver = new clsDriver();
+            clsDriver Driver = clsDriver.FindByPersonID(this.ApplicationPersonID);
 
-        //        Driver.PersonID = this.ApplicationPersonID;
-        //        Driver.CreatedByUserID = CreatedByUserID;
-        //        if (Driver.Save())
-        //        {
-        //            DriverID = Driver.DriverID;
-        //        }
-        //        else
-        //        {
-        //            return -1;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        DriverID = Driver.DriverID;
-        //    }
-        //    //now we diver is there, so we add new licesnse
+            if (Driver == null)
+            {
+                //we check if the driver already there for this person.
+                Driver = new clsDriver();
 
-        //    clsLicense License = new clsLicense();
-        //    License.ApplicationID = this.ApplicationID;
-        //    License.DriverID = DriverID;
-        //    License.LicenseClass = this.LicenseClassID;
-        //    License.IssueDate = DateTime.Now;
-        //    License.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
-        //    License.Notes = Notes;
-        //    License.PaidFees = this.LicenseClassInfo.ClassFees;
-        //    License.IsActive = true;
-        //    License.IssueReason = clsLicense.enIssueReason.FirstTime;
-        //    License.CreatedByUserID = CreatedByUserID;
+                Driver.PersonID = this.ApplicationPersonID;
+                Driver.CreatedByUserID = CreatedByUserID;
 
-        //    if (License.Save())
-        //    {
-        //        //now we should set the application status to complete.
-        //        this.SetComplete();
+                if (Driver.Save())
+                {
+                    DriverID = Driver.DriverID;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                DriverID = Driver.DriverID;
+            }
+            //now we diver is there, so we add new licesnse
 
-        //        return License.LicenseID;
-        //    }
+            clsLicense License = new clsLicense();
+            License.ApplicationID = this.ApplicationID;
+            License.DriverID = DriverID;
+            License.LicenseClass = this.LicenseClassID;
+            License.IssueDate = DateTime.Now;
+            License.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
+            License.Notes = Notes;
+            License.PaidFees = this.LicenseClassInfo.ClassFees;
+            License.IsActive = true;
+            License.IssueReason = clsLicense.enIssueReason.FirstTime;
+            License.CreatedByUserID = CreatedByUserID;
 
-        //    else
-        //        return -1;
-        //}
+            if (License.Save())
+            {
+                //now we should set the application status to complete.
+                this.SetComplete();
+
+                return License.LicenseID;
+            }
+
+            else
+                return -1;
+        }
+
 
         public bool IsLicenseIssued()
         {

@@ -28,6 +28,7 @@ namespace DVLD_Buisness
         public float PaidFees { set; get; }
         public bool IsActive { set; get; }
         public enIssueReason IssueReason { set; get; }
+        public clsDriver DriverInfo;
         public string IssueReasonText
         {
             get
@@ -35,8 +36,9 @@ namespace DVLD_Buisness
                 return GetIssueReasonText(this.IssueReason);
             }
         }
-       // public clsDetainedLicense DetainedInfo { set; get; }
+        //public clsDetainedLicense DetainedInfo { set; get; }
         public int CreatedByUserID { set; get; }
+
         //public bool IsDetained
         //{
         //    get { return clsDetainedLicense.IsLicenseDetained(this.LicenseID); }
@@ -78,7 +80,7 @@ namespace DVLD_Buisness
             this.IssueReason = IssueReason;
             this.CreatedByUserID = CreatedByUserID;
 
-           // this.DriverInfo = clsDriver.FindByDriverID(this.DriverID);
+            this.DriverInfo = clsDriver.FindByDriverID(this.DriverID);
             this.LicenseClassIfo = clsLicenseClass.Find(this.LicenseClass);
            // this.DetainedInfo = clsDetainedLicense.FindByLicenseID(this.LicenseID);
 
@@ -254,7 +256,7 @@ namespace DVLD_Buisness
             //First Create Applicaiton 
             clsApplication Application = new clsApplication();
 
-            //Application.ApplicantPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationPersonID = this.DriverInfo.PersonID;
             Application.ApplicationDate = DateTime.Now;
             Application.ApplicationTypeID = (int)clsApplication.enApplicationType.RenewDrivingLicense;
             Application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
@@ -302,7 +304,7 @@ namespace DVLD_Buisness
             //First Create Applicaiton 
             clsApplication Application = new clsApplication();
 
-            //Application.ApplicantPersonID = this.DriverInfo.PersonID;
+            Application.ApplicationPersonID = this.DriverInfo.PersonID;
             Application.ApplicationDate = DateTime.Now;
 
             Application.ApplicationTypeID = (IssueReason == enIssueReason.DamagedReplacement) ?
