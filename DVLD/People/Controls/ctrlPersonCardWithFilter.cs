@@ -98,7 +98,7 @@ namespace DVLD.People.Controls
             }
 
             if (OnPersonSelected != null && FilterEnabled)
-                // Raise the event with a parameter
+               
                 OnPersonSelected(ctrlPersonCard1.PersonID);
 
         }
@@ -113,7 +113,7 @@ namespace DVLD.People.Controls
         {
             if (!this.ValidateChildren())
             {
-                //Here we dont continue becuase the form is not valid
+                 
                 MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the error", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
@@ -151,7 +151,7 @@ namespace DVLD.People.Controls
 
         private void DataBackEvent(object sender, int PersonID)
         {
-            // Handle the data received
+            
 
             cbFilterBy.SelectedIndex = 1;
             txtFilterValue.Text = PersonID.ToString();
@@ -165,13 +165,13 @@ namespace DVLD.People.Controls
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Check if the pressed key is Enter (character code 13)
+            
             if (e.KeyChar == (char)13)
             {
                 btnFind.PerformClick();
             }
 
-            //this will allow only digits if person id is selected
+            
             if (cbFilterBy.Text == "Person ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }

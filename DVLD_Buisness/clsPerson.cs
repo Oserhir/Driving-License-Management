@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DVLD_Buisness
 {
     public class clsPerson
@@ -82,9 +83,8 @@ namespace DVLD_Buisness
             Mode = enMode.Update;
         }
 
-        public bool _AddNewPerson()
+        private bool _AddNewPerson()
         {
-            //call DataAccess Layer 
             this.PersonID = clsPersonData.AddNewPerson(this.FirstName, this.SecondName, this.ThirdName,
                 this.LastName, this.NationalNo,
                 this.DateOfBirth, this.Gendor, this.Address, this.Phone, this.Email,
@@ -93,9 +93,8 @@ namespace DVLD_Buisness
             return (this.PersonID != -1);
         }
 
-        public bool _UpdatePerson()
+        private bool _UpdatePerson()
         {
-            //call DataAccess Layer 
             return clsPersonData.UpdatePerson(this.PersonID, this.FirstName, this.SecondName, this.ThirdName,
                 this.LastName, this.NationalNo,
                 this.DateOfBirth, this.Gendor, this.Address, this.Phone, this.Email,
@@ -141,7 +140,7 @@ namespace DVLD_Buisness
                                     ref Gendor, ref Address, ref Phone, ref Email,
                                     ref NationalityCountryID, ref ImagePath))
             {
-                // we return new object of that person with the right data
+                 
                 return new clsPerson( PersonID,  FirstName,  SecondName,  ThirdName,
              LastName,  NationalNo,  DateOfBirth,  Gendor,
               Address,  Phone,  Email,

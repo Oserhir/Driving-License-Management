@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace DVLD_DataAccess
 {
@@ -15,49 +16,38 @@ namespace DVLD_DataAccess
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * FROM Countries WHERE CountryID = @CountryID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@CountryID", ID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("SP_GetCountryInfoByID", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
 
-                    // The record was found
-                    isFound = true;
+                    command.Parameters.AddWithValue("@CountryID", ID);
 
-                    CountryName = (string)reader["CountryName"];
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        if (reader.Read())
+                        {
+                            isFound = true;
+
+                            CountryName = (string)reader["CountryName"];
+
+                        }
+                        else
+                        {
+                            isFound = false;
+                        }
+
+                    }
 
                 }
-                else
-                {
-                    // The record was not found
-                    isFound = false;
-                }
-
-                reader.Close();
-
-
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return isFound;
+ 
         }
 
         public static bool GetCountryInfoByName(string CountryName, ref int ID)

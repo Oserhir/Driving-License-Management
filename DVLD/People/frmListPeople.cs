@@ -48,40 +48,37 @@ namespace DVLD.People
 
             if (dgvPeople.Rows.Count > 0)
             {
-
                 dgvPeople.Columns[0].HeaderText = "Person ID";
-                dgvPeople.Columns[0].Width = 110;
+                dgvPeople.Columns[0].Width = 90;
 
                 dgvPeople.Columns[1].HeaderText = "National No.";
-                dgvPeople.Columns[1].Width = 120;
+                dgvPeople.Columns[1].Width = 90;
 
                 dgvPeople.Columns[2].HeaderText = "First Name";
-                dgvPeople.Columns[2].Width = 120;
+                dgvPeople.Columns[2].Width = 100;
 
                 dgvPeople.Columns[3].HeaderText = "Last Name";
-                dgvPeople.Columns[3].Width = 120;
+                dgvPeople.Columns[3].Width = 100;
 
                 dgvPeople.Columns[4].HeaderText = "Gendor";
-                dgvPeople.Columns[4].Width = 120;
+                dgvPeople.Columns[4].Width = 70;
 
                 dgvPeople.Columns[5].HeaderText = "Date Of Birth";
-                dgvPeople.Columns[5].Width = 140;
+                dgvPeople.Columns[5].Width = 120;
 
                 dgvPeople.Columns[6].HeaderText = "Nationality";
-                dgvPeople.Columns[6].Width = 120;
+                dgvPeople.Columns[6].Width = 80;
 
                 dgvPeople.Columns[7].HeaderText = "Phone";
-                dgvPeople.Columns[7].Width = 120;
+                dgvPeople.Columns[7].Width = 100;
 
                 dgvPeople.Columns[8].HeaderText = "Email";
-                dgvPeople.Columns[8].Width = 170;
+                dgvPeople.Columns[8].Width = 140;
             }
         }
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //we allow number incase person id is selected.
-            // only number on the keyboard
             if (cbFilterBy.Text == "Person ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
@@ -100,7 +97,6 @@ namespace DVLD.People
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
         {
             string FilterColumn = "";
-            //Map Selected Filter to real Column name 
 
             switch (cbFilterBy.Text)
             {
@@ -142,7 +138,6 @@ namespace DVLD.People
 
             }
 
-            //Reset the filters in case nothing selected or filter value conains nothing.
             if (txtFilterValue.Text.Trim() == "" || FilterColumn == "None")
             {
                 _dtPeople.DefaultView.RowFilter = "";
@@ -152,7 +147,6 @@ namespace DVLD.People
 
             if (FilterColumn == "PersonID")
             {
-                //in this case we deal with integer not string.
                 _dtPeople.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());
             }
             else
@@ -199,10 +193,7 @@ namespace DVLD.People
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete Person [" + dgvPeople.CurrentRow.Cells[0].Value + "]", "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-
             {
-
-                //Perform Delele and refresh
                 if (clsPerson.DeletePerson((int)dgvPeople.CurrentRow.Cells[0].Value))
                 {
                     MessageBox.Show("Person Deleted Successfully.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -213,6 +204,11 @@ namespace DVLD.People
                     MessageBox.Show("Person was not deleted because it has data linked to it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

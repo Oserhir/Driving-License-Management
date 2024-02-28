@@ -115,7 +115,6 @@ namespace DVLD.People.Controls
             frmAddUpdatePerson frm = new frmAddUpdatePerson(_PersonID);
             frm.ShowDialog();
 
-            //refresh
             LoadPersonInfo(_PersonID);
         }
     }

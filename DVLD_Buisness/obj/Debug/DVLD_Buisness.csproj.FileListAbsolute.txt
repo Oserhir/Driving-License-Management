@@ -7,3 +7,4 @@ C:\Users\YUSSEF\source\repos\Driving License Management\DVLD_Buisness\obj\Debug\
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD_Buisness\obj\Debug\DVLD_Buisness.csproj.CopyComplete
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD_Buisness\obj\Debug\DVLD_Buisness.dll
 C:\Users\YUSSEF\source\repos\Driving License Management\DVLD_Buisness\obj\Debug\DVLD_Buisness.pdb
+C:\Users\YUSSEF\source\repos\Driving License Management\DVLD_Buisness\bin\Debug\DVLD_DataAccess.dll.config

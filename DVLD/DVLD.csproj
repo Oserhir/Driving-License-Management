@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -707,6 +708,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\International 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_2_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_2_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user_2-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-user_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_2_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,7 +36,7 @@ namespace DVLD.Login
                 }
                 else
                 {
-                    
+                    // delete
                     clsGlobal.RememberUsernameAndPassword("", "");
                 }
 
@@ -65,6 +65,8 @@ namespace DVLD.Login
         private void frmLogin_Load(object sender, EventArgs e)
         {
             string UserName = "", Password = "";
+
+
 
             if (clsGlobal.GetStoredCredential(ref UserName, ref Password))
             {
