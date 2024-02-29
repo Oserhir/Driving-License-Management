@@ -222,8 +222,8 @@ namespace DVLD.Applications.Local_Driving_License
             {
                 MessageBox.Show("No License Found!", "No License", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-                }
             }
+        }
 
         private void btnAddNewApplication_Click(object sender, EventArgs e)
         {
@@ -254,6 +254,8 @@ namespace DVLD.Applications.Local_Driving_License
 
             //Enabled only if person passed all tests and Does not have license. 
             issueDrivingLicenseFirstTimeToolStripMenuItem.Enabled = (TotalPassedTests == 3) && !LicenseExists;
+
+            showPersonLicenseHistoryToolStripMenuItem.Enabled = LicenseExists;
 
             showLicenseToolStripMenuItem.Enabled = LicenseExists;
             editApplicationToolStripMenuItem.Enabled = !LicenseExists && (LocalDrivingLicenseApplication.ApplicationStatus == clsApplication.enApplicationStatus.New);

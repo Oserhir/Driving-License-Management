@@ -353,7 +353,7 @@ namespace DVLD_DataAccess
 
         public static bool IsPersonExist(int PersonID)
         {
-            // *************************************-
+
             bool isFound = false;
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
@@ -366,21 +366,20 @@ namespace DVLD_DataAccess
 
                     command.Parameters.AddWithValue("@PersonID", PersonID);
 
-                    using(SqlDataReader reader = command.ExecuteReader())
-                    {
-                        isFound = ((int)command.ExecuteScalar() == 1 );
-                    }
+                    int result = (int)command.ExecuteScalar();
 
+                    isFound = (result == 1);
                 }
 
             }
 
-
             return isFound;
+
         }
 
         public static bool IsPersonExist(string NationalNo)
         {
+
             bool isFound = false;
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
@@ -393,17 +392,15 @@ namespace DVLD_DataAccess
 
                     command.Parameters.AddWithValue("@NationalNo", NationalNo);
 
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        isFound = ((int)command.ExecuteScalar() == 1);
-                    }
+                    int result = (int)command.ExecuteScalar();
 
+                    isFound = (result == 1);
                 }
 
             }
 
-
             return isFound;
+
         }
 
 

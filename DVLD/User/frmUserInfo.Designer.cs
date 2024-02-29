@@ -34,7 +34,7 @@
             // 
             // ctrlUserCard1
             // 
-            this.ctrlUserCard1.Location = new System.Drawing.Point(12, 12);
+            this.ctrlUserCard1.Location = new System.Drawing.Point(12, 0);
             this.ctrlUserCard1.Name = "ctrlUserCard1";
             this.ctrlUserCard1.Size = new System.Drawing.Size(898, 436);
             this.ctrlUserCard1.TabIndex = 0;
@@ -46,7 +46,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(723, 444);
+            this.btnClose.Location = new System.Drawing.Point(744, 432);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 37);
@@ -59,7 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 491);
+            this.ClientSize = new System.Drawing.Size(945, 483);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ctrlUserCard1);
             this.Name = "frmUserInfo";

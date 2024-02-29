@@ -5,6 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Net;
+using System.Security.Policy;
 
 namespace DVLD_DataAccess
 {
@@ -15,55 +18,43 @@ namespace DVLD_DataAccess
            int LocalDrivingLicenseApplicationID, ref int ApplicationID,
            ref int LicenseClassID)
         {
+
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-
-            string query = "SELECT * FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("SP_GetLocalDrivingLicenseApplicationInfoByID", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
 
-                    // The record was found
-                    isFound = true;
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
-                    ApplicationID = (int)reader["ApplicationID"];
-                    LicenseClassID = (int)reader["LicenseClassID"];
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
 
+                        if (reader.Read())
+                        {
+                            isFound = true;
 
+                            ApplicationID = (int)reader["ApplicationID"];
+                            LicenseClassID = (int)reader["LicenseClassID"];
+
+                        }
+                        else
+                        {
+                            isFound = false;
+                        }
+
+                    }
 
                 }
-                else
-                {
-                    // The record was not found
-                    isFound = false;
-                }
-
-                reader.Close();
-
-
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return isFound;
+
+
         }
 
         public static bool GetLocalDrivingLicenseApplicationInfoByApplicationID(
@@ -72,178 +63,124 @@ namespace DVLD_DataAccess
         {
             bool isFound = false;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * FROM LocalDrivingLicenseApplications WHERE ApplicationID = @ApplicationID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("SP_GetLocalDrivingLicenseApplicationInfoByID", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
 
-                    // The record was found
-                    isFound = true;
+                    command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
 
-                    LocalDrivingLicenseApplicationID = (int)reader["LocalDrivingLicenseApplicationID"];
-                    LicenseClassID = (int)reader["LicenseClassID"];
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        if (reader.Read())
+                        {
+                            isFound = true;
+
+                            LocalDrivingLicenseApplicationID = (int)reader["LocalDrivingLicenseApplicationID"];
+                            LicenseClassID = (int)reader["LicenseClassID"];
+
+                        }
+                        else
+                        {
+                            isFound = false;
+                        }
+
+                    }
 
                 }
-                else
-                {
-                    // The record was not found
-                    isFound = false;
-                }
-
-                reader.Close();
-
-
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return isFound;
+
         }
 
         public static DataTable GetAllLocalDrivingLicenseApplications()
         {
-
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT *
-                              FROM LocalDrivingLicenseApplications_View
-                              order by ApplicationDate Desc";
-
-
-
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-
+                using (SqlCommand command = new SqlCommand("SP_GetAllLocalDrivingLicenseApplications", connection))
                 {
-                    dt.Load(reader);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            dt.Load(reader);
+                        }
+
+                    }
+
                 }
 
-                reader.Close();
-
-
-            }
-
-            catch (Exception ex)
-            {
-                // Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
             }
 
             return dt;
-
         }
 
         public static int AddNewLocalDrivingLicenseApplication(
             int ApplicationID, int LicenseClassID)
         {
-
-            //this function will return the new person id if succeeded and -1 if not.
             int LocalDrivingLicenseApplicationID = -1;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"INSERT INTO LocalDrivingLicenseApplications ( 
-                            ApplicationID,LicenseClassID)
-                             VALUES (@ApplicationID,@LicenseClassID);
-                             SELECT SCOPE_IDENTITY();";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("ApplicationID", ApplicationID);
-            command.Parameters.AddWithValue("LicenseClassID", LicenseClassID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
                 connection.Open();
 
-                object result = command.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                using (SqlCommand command = new SqlCommand("SP_AddNewLocalDrivingLicenseApplication", connection))
                 {
-                    LocalDrivingLicenseApplicationID = insertedID;
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("ApplicationID", ApplicationID);
+                    command.Parameters.AddWithValue("LicenseClassID", LicenseClassID);
+
+                    SqlParameter outputIdParam = new SqlParameter("@NewLocalDrivingLicenseApplicationID", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+
+                    command.Parameters.Add(outputIdParam);
+
+                    command.ExecuteNonQuery();
+
+                    LocalDrivingLicenseApplicationID = (int)command.Parameters["@NewLocalDrivingLicenseApplicationID"].Value;
                 }
-            }
-
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
 
             }
-
-            finally
-            {
-                connection.Close();
-            }
-
 
             return LocalDrivingLicenseApplicationID;
+        
         }
 
 
         public static bool UpdateLocalDrivingLicenseApplication(
             int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)
         {
-
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"Update  LocalDrivingLicenseApplications  
-                            set ApplicationID = @ApplicationID,
-                                LicenseClassID = @LicenseClassID
-                            where LocalDrivingLicenseApplicationID=@LocalDrivingLicenseApplicationID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-            command.Parameters.AddWithValue("ApplicationID", ApplicationID);
-            command.Parameters.AddWithValue("LicenseClassID", LicenseClassID);
-
-
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
                 connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
 
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-                return false;
-            }
+                using (SqlCommand command = new SqlCommand("SP_UpdateLocalDrivingLicenseApplication", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
-            finally
-            {
-                connection.Close();
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                    command.Parameters.AddWithValue("ApplicationID", ApplicationID);
+                    command.Parameters.AddWithValue("LicenseClassID", LicenseClassID);
+
+                    rowsAffected = command.ExecuteNonQuery();
+
+                }
             }
 
             return (rowsAffected > 0);
@@ -252,33 +189,27 @@ namespace DVLD_DataAccess
 
         public static bool DeleteLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID)
         {
-
             int rowsAffected = 0;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"Delete LocalDrivingLicenseApplications 
-                                where LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
                 connection.Open();
 
-                rowsAffected = command.ExecuteNonQuery();
+                using (SqlCommand command = new SqlCommand("SP_DeleteLocalDrivingLicenseApplication", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
-            }
-            catch (Exception ex)
-            {
-                // Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
-                connection.Close();
+                    try
+                    {
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        rowsAffected = 0;
+                    }
+                }
 
             }
 
@@ -287,10 +218,7 @@ namespace DVLD_DataAccess
         }
 
         public static bool DoesPassTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
-
         {
-
-
             bool Result = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -339,8 +267,6 @@ namespace DVLD_DataAccess
         public static bool DoesAttendTestType(int LocalDrivingLicenseApplicationID, int TestTypeID)
 
         {
-
-
             bool IsFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
